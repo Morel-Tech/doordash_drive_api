@@ -1,6 +1,7 @@
 export 'action_if_undeliverable.dart';
 export 'cancellation_reason.dart';
 export 'dasher_allowed_vehicle.dart';
+export 'delivery.dart';
 export 'delivery_item.dart';
 export 'delivery_item_options.dart';
 export 'delivery_status.dart';

@@ -9,6 +9,7 @@ class ShoppingOptions extends Equatable {
   const ShoppingOptions({
     required this.paymentMethod,
     required this.dropoffContactLoyaltyNumber,
+    this.paymentGiftCards,
     this.paymentBarcode,
     this.readyForPickupBy,
   });
@@ -28,6 +29,9 @@ class ShoppingOptions extends Equatable {
   /// for the order in store.
   final String? paymentBarcode;
 
+  /// List of gift cards use for payment
+  final List<String>? paymentGiftCards;
+
   /// Estimated time for order pickup by customer in ISO-8601 format, only
   /// required for shop_stage orders.
   final String? readyForPickupBy;
@@ -39,6 +43,7 @@ class ShoppingOptions extends Equatable {
   List<Object?> get props => [
         paymentMethod,
         paymentBarcode,
+        paymentGiftCards,
         readyForPickupBy,
         dropoffContactLoyaltyNumber,
       ];

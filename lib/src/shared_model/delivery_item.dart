@@ -42,8 +42,12 @@ class DeliveryItem extends Equatable {
   final String? externalId;
 
   /// Used to distinguish between multiple items with the same external_id, such
-  ///  as for 2 steaks in the same order with separate weights. Not updatable.
-  final String? externalInstanceId;
+  /// as for 2 steaks in the same order with separate weights. Not updatable.
+  ///
+  // TODO(3ettilina): Verify with Doordash the value coming is an int.
+  // Their API says it's String, but the value returned in the json example is
+  // an int.
+  final int? externalInstanceId;
 
   /// Unit volume of 1 instance of this item, in cubic feet, with or without a
   /// decimal point. The overall volume of this item is calculated by
@@ -75,7 +79,11 @@ class DeliveryItem extends Equatable {
   /// Barcode identifying the item. This value must be in one of the following
   /// formats: Data Matrix, AZTEC, Code 128, Code 39, Code 93, CODABAR, EAN 13,
   /// EAN 8, ITF, UPC A, UPC E, PDF417. Not updatable.
-  final String? barcode;
+  ///
+  // TODO(3ettilina): Verify with Doordash the value coming is an int.
+  // Their API says it's String, but the value returned in the json example
+  // is an int.
+  final int? barcode;
 
   /// Details about how to shop for an item. Not updatable.
   final DeliveryItemOptions? itemOptions;

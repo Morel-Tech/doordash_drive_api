@@ -12,6 +12,9 @@ ShoppingOptions _$ShoppingOptionsFromJson(Map<String, dynamic> json) =>
           _$PaymentMethodShoppingOptionEnumMap, json['payment_method']),
       dropoffContactLoyaltyNumber:
           json['dropoff_contact_loyalty_number'] as String,
+      paymentGiftCards: (json['payment_gift_cards'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       paymentBarcode: json['payment_barcode'] as String?,
       readyForPickupBy: json['ready_for_pickup_by'] as String?,
     );
@@ -29,6 +32,7 @@ Map<String, dynamic> _$ShoppingOptionsToJson(ShoppingOptions instance) {
   }
 
   writeNotNull('payment_barcode', instance.paymentBarcode);
+  writeNotNull('payment_gift_cards', instance.paymentGiftCards);
   writeNotNull('ready_for_pickup_by', instance.readyForPickupBy);
   val['dropoff_contact_loyalty_number'] = instance.dropoffContactLoyaltyNumber;
   return val;

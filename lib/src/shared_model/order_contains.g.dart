@@ -9,6 +9,9 @@ part of 'order_contains.dart';
 OrderContains _$OrderContainsFromJson(Map<String, dynamic> json) =>
     OrderContains(
       alcohol: json['alcohol'] as bool?,
+      pharmacyItems: json['pharmacy_items'] as bool?,
+      ageRestrictedPharmacyItems:
+          json['age_restricted_pharmacy_items'] as bool?,
     );
 
 Map<String, dynamic> _$OrderContainsToJson(OrderContains instance) {
@@ -21,5 +24,8 @@ Map<String, dynamic> _$OrderContainsToJson(OrderContains instance) {
   }
 
   writeNotNull('alcohol', instance.alcohol);
+  writeNotNull('pharmacy_items', instance.pharmacyItems);
+  writeNotNull(
+      'age_restricted_pharmacy_items', instance.ageRestrictedPharmacyItems);
   return val;
 }
