@@ -12,7 +12,8 @@
     "enroute",
     "libphonenumber",
     "midmile",
-    "mocktail"
+    "mocktail",
+    "Github"
   ],
   "ignoreWords": [],
   "import": []
