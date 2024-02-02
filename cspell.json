@@ -1,8 +1,9 @@
 {
   "version": "0.2",
-  "ignorePaths": [],
-  "dictionaryDefinitions": [],
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "dictionaries": [],
+  "dictionaryDefinitions": [],
+  "useGitignore": true,
   "words": [
     "Businsess",
     "CODABAR",
