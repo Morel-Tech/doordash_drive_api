@@ -4,6 +4,7 @@ export 'dasher_allowed_vehicle.dart';
 export 'delivery.dart';
 export 'delivery_item.dart';
 export 'delivery_item_options.dart';
+export 'delivery_request.dart';
 export 'delivery_status.dart';
 export 'dropoff_options.dart';
 export 'dropped_item.dart';

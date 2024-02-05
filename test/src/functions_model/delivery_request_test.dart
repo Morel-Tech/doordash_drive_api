@@ -1,11 +1,12 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
+import 'package:doordash_drive_api/src/shared_model/delivery_request.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 void main() {
   group('CreateQuoteRequest', () {
     test('convert to Json', () {
-      const request = CreateQuoteRequest(
+      const request = DeliveryRequest(
         externalDeliveryId: 'D-1763',
         locale: 'en-US, fr-CA, es-US',
         orderFulfillmentMethod: OrderFulfillmentMethod.standard,
@@ -94,12 +95,12 @@ void main() {
         dropoffCashOnDelivery: 1999,
       );
 
-      expect(request.toJson(), equals(CreateQuoteTestData.requestToJson));
+      expect(request.toJson(), equals(DeliveryRequestTestData.requestToJson));
     });
   });
 }
 
-abstract class CreateQuoteTestData {
+abstract class DeliveryRequestTestData {
   static const requestToJson = {
     'external_delivery_id': 'D-1763',
     'locale': 'en-US, fr-CA, es-US',

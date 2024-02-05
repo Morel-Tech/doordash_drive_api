@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'create_quote.dart';
+part of 'delivery_request.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CreateQuoteRequest _$CreateQuoteRequestFromJson(Map<String, dynamic> json) =>
-    CreateQuoteRequest(
+DeliveryRequest _$DeliveryRequestFromJson(Map<String, dynamic> json) =>
+    DeliveryRequest(
       externalDeliveryId: json['external_delivery_id'] as String,
       dropoffAddress: json['dropoff_address'] as String,
       dropoffPhoneNumber: json['dropoff_phone_number'] as String,
@@ -69,7 +69,7 @@ CreateQuoteRequest _$CreateQuoteRequestFromJson(Map<String, dynamic> json) =>
       dropoffCashOnDelivery: json['dropoff_cash_on_delivery'] as int?,
     );
 
-Map<String, dynamic> _$CreateQuoteRequestToJson(CreateQuoteRequest instance) {
+Map<String, dynamic> _$DeliveryRequestToJson(DeliveryRequest instance) {
   final val = <String, dynamic>{
     'external_delivery_id': instance.externalDeliveryId,
   };

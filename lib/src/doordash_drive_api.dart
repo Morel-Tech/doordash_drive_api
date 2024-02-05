@@ -1,6 +1,5 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
 import 'package:doordash_drive_api/src/doordash_drive_client.dart';
-import 'package:doordash_drive_api/src/functions_model/accept_quote.dart';
 
 /// {@template doordash_drive_api}
 /// A client for the Doordash Drive REST API
@@ -14,7 +13,7 @@ class DoordashDriveApi {
   final DoordashDriveClient _client;
 
   Future<Delivery> createQuote({
-    required CreateQuoteRequest request,
+    required DeliveryRequest request,
   }) =>
       _client.send(
         path: DoordashDriveEndpointPaths.createQuote,
@@ -35,6 +34,17 @@ class DoordashDriveApi {
         body: request.toJson(),
         responseFromJson: Delivery.fromJson,
       );
+
+  /// Create a [Delivery]
+  Future<Delivery> createDelivery({
+    required DeliveryRequest request,
+  }) =>
+      _client.send(
+        path: DoordashDriveEndpointPaths.createDelivery,
+        method: HttpMethod.post,
+        body: request.toJson(),
+        responseFromJson: Delivery.fromJson,
+      );
 }
 
 abstract class DoordashDriveEndpointPaths {
@@ -44,4 +54,6 @@ abstract class DoordashDriveEndpointPaths {
 
   static String acceptQuote(String externalDeliveryId) =>
       '$_basePath/$externalDeliveryId/accept';
+
+  static const String createDelivery = '$_basePath/deliveries';
 }
