@@ -1,6 +1,8 @@
 {
   "version": "0.2",
-  "ignorePaths": [],
+  "ignorePaths": [
+    "**/test/**"
+  ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
@@ -12,7 +14,9 @@
     "enroute",
     "libphonenumber",
     "midmile",
-    "mocktail"
+    "mocktail",
+    "3ettilina",
+    "pubspec"
   ],
   "ignoreWords": [],
   "import": []
