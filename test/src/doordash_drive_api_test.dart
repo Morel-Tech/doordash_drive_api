@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:doordash_drive_api/doordash_drive_api.dart';
 import 'package:doordash_drive_api/src/doordash_drive_client.dart';
 import 'package:http/http.dart';

@@ -1,5 +1,4 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
-import 'package:doordash_drive_api/src/shared_model/delivery_request.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
