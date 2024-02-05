@@ -11,14 +11,14 @@ DeliveryItem _$DeliveryItemFromJson(Map<String, dynamic> json) => DeliveryItem(
       quantity: json['quantity'] as int,
       description: json['description'] as String?,
       externalId: json['external_id'] as String?,
-      externalInstanceId: json['external_instance_id'] as String?,
+      externalInstanceId: json['external_instance_id'] as int?,
       volume: (json['volume'] as num?)?.toDouble(),
       weight: (json['weight'] as num?)?.toDouble(),
       length: (json['length'] as num?)?.toDouble(),
       width: (json['width'] as num?)?.toDouble(),
       height: (json['height'] as num?)?.toDouble(),
       price: json['price'] as int?,
-      barcode: json['barcode'] as String?,
+      barcode: json['barcode'] as int?,
       itemOptions: json['item_options'] == null
           ? null
           : DeliveryItemOptions.fromJson(

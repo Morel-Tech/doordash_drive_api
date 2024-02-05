@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:doordash_drive_api/doordash_drive_api.dart';
-import 'package:http/http.dart';
+import 'package:doordash_drive_api/src/doordash_drive_client.dart';
+import 'package:doordash_drive_api/src/functions_model/accept_quote.dart';
 
 /// {@template doordash_drive_api}
 /// A client for the Doordash Drive REST API
@@ -14,52 +13,35 @@ class DoordashDriveApi {
 
   final DoordashDriveClient _client;
 
-  Future<CreateQuoteResponse> createQuote({
+  Future<Delivery> createQuote({
     required CreateQuoteRequest request,
   }) =>
       _client.send(
-        path: 'drive/v2/quotes',
+        path: DoordashDriveEndpointPaths.createQuote,
         method: HttpMethod.post,
-        body: request,
-        responseFromJson: CreateQuoteResponse.fromJson,
+        body: request.toJson(),
+        responseFromJson: Delivery.fromJson,
+      );
+
+  /// When you’re happy with the quote you created, start the delivery process
+  /// by accepting the quote.
+  Future<Delivery> acceptQuote({
+    required String externalDeliveryId,
+    required AcceptQuoteRequest request,
+  }) =>
+      _client.send(
+        path: DoordashDriveEndpointPaths.acceptQuote(externalDeliveryId),
+        method: HttpMethod.post,
+        body: request.toJson(),
+        responseFromJson: Delivery.fromJson,
       );
 }
 
-typedef ResponseFromJson<T> = T Function(Map<String, dynamic> json);
+abstract class DoordashDriveEndpointPaths {
+  static const String _basePath = 'drive/v2';
 
-class DoordashDriveClient {
-  const DoordashDriveClient({
-    required Client client,
-    required String baseUrl,
-  })  : _client = client,
-        _baseUrl = baseUrl;
+  static const String createQuote = '$_basePath/quotes';
 
-  final Client _client;
-  final String _baseUrl;
-
-  Future<T> send<T>({
-    required String path,
-    required HttpMethod method,
-    required ResponseFromJson<T> responseFromJson,
-    Object? body,
-  }) async {
-    final streamedResponse = await _client.send(
-      Request(
-        method.name.toUpperCase(),
-        Uri.parse('$_baseUrl/$path'),
-      ),
-    );
-
-    final response = await Response.fromStream(streamedResponse);
-    final json = Map<String, dynamic>.from(jsonDecode(response.body) as Map);
-    return responseFromJson(json);
-  }
-}
-
-enum HttpMethod {
-  get,
-  post,
-  patch,
-  put,
-  delete,
+  static String acceptQuote(String externalDeliveryId) =>
+      '$_basePath/$externalDeliveryId/accept';
 }

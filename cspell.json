@@ -1,8 +1,11 @@
 {
   "version": "0.2",
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-  "dictionaries": [],
+  "ignorePaths": [
+    "**/test/**"
+  ],
   "dictionaryDefinitions": [],
+  "dictionaries": [],
   "useGitignore": true,
   "words": [
     "Businsess",
@@ -13,7 +16,9 @@
     "enroute",
     "libphonenumber",
     "midmile",
-    "mocktail"
+    "mocktail",
+    "3ettilina",
+    "pubspec"
   ],
   "ignoreWords": [],
   "import": []

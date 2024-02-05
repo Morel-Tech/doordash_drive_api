@@ -7,6 +7,8 @@ part 'order_contains.g.dart';
 class OrderContains extends Equatable {
   const OrderContains({
     this.alcohol,
+    this.pharmacyItems,
+    this.ageRestrictedPharmacyItems,
   });
 
   /// Converts a [Map]<[String], [dynamic]> to a [OrderContains]
@@ -19,6 +21,18 @@ class OrderContains extends Equatable {
   /// Flag to specify if the delivery contains alcohol.
   final bool? alcohol;
 
+  /// Flag to specify if the delivery contains pharmacy items.
+  final bool? pharmacyItems;
+
+  /// Flag to specify if the delivery contains age restricted pharmacy items.
+  /// The order is an S3+ pharmacy order which requires ID Verification and
+  /// can only be delivered to 18+/21+ year olds.
+  final bool? ageRestrictedPharmacyItems;
+
   @override
-  List<Object?> get props => [alcohol];
+  List<Object?> get props => [
+        alcohol,
+        pharmacyItems,
+        ageRestrictedPharmacyItems,
+      ];
 }
