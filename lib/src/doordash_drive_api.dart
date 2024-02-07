@@ -80,6 +80,7 @@ abstract class DoordashDriveEndpointPaths {
       '$_basePath/$externalDeliveryId/accept';
 
   static const String createDelivery = '$_basePath/deliveries';
+
   /// /drive/v2/deliveries
   static const String createDelivery = '$_basePath/deliveries';
 
