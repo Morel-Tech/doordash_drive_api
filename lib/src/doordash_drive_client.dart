@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart';
 
 typedef ResponseFromJson<T> = T Function(Map<String, dynamic> json);
@@ -13,10 +14,9 @@ class DoordashDriveClient {
   final Client _client;
   final String _baseUrl;
 
-  Future<T> send<T>({
+  Future<Map<String, dynamic>> send({
     required String path,
     required HttpMethod method,
-    required ResponseFromJson<T> responseFromJson,
     Object? body,
   }) async {
     final streamedResponse = await _client.send(
@@ -27,8 +27,7 @@ class DoordashDriveClient {
     );
 
     final response = await Response.fromStream(streamedResponse);
-    final json = Map<String, dynamic>.from(jsonDecode(response.body) as Map);
-    return responseFromJson(json);
+    return Map<String, dynamic>.from(jsonDecode(response.body) as Map);
   }
 }
 
