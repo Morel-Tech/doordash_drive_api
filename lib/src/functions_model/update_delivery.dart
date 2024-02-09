@@ -63,8 +63,9 @@ class UpdateDeliveryRequest extends Equatable {
   /// Instructions for the Dasher to follow when picking up the order.
   final String? pickupInstructions;
 
-  /// The string identifier used to create your business. Used in combination with
-  /// pickup_external_store_id to select the pick up location.
+  /// The string identifier used to create your business.
+  /// Used in combination with pickup_external_store_id to select the
+  /// pick up location.
   /// If you provide an pickup_external_business_id,
   /// you must also provide an pickup_external_store_id.
   final String? pickupExternalBusinessId;
