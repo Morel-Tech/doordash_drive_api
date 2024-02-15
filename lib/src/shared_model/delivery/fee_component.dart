@@ -1,4 +1,5 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
+import 'package:doordash_drive_api/src/shared_model/delivery/index.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
