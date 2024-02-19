@@ -165,7 +165,8 @@ void main() {
           );
 
           final response = await api.cancelDelivery(
-              externalDeliveryId: 'externalDeliveryId');
+            externalDeliveryId: 'externalDeliveryId',
+          );
 
           expect(response, isA<Delivery>());
         });
