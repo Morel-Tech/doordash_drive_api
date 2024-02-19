@@ -189,8 +189,8 @@ void main() {
             ),
           );
 
-          final response = await api.cancelDelivery(
-            externalDeliveryId: 'externalBusinessId',
+          final response = await api.getBusiness(
+            externalBusinessId: 'externalBusinessId',
           );
 
           expect(response, isA<Business>());
