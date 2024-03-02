@@ -121,26 +121,59 @@ class DoordashDriveApi {
     );
     return Delivery.fromJson(response);
   }
+
+  /// Unique, caller-selected ID of the business.
+  /// Validated using the following regular expression: /^[A-Za-z0-9_-]{3,64}$/
+  Future<Business> getBusiness({
+    required String externalBusinessId,
+  }) async {
+    final response = await _client.send(
+      path: DoordashDriveEndpointPaths.getBusiness(externalBusinessId),
+      method: HttpMethod.get,
+    );
+    return Business.fromJson(response);
+  }
+
+  /// Update the attributes of a business.
+  Future<Business> updateBusiness({
+    required String externalBusinessId,
+    required UpdateBusinessRequest request,
+  }) async {
+    final response = await _client.send(
+      path: DoordashDriveEndpointPaths.getBusiness(externalBusinessId),
+      body: request.toJson(),
+      method: HttpMethod.patch,
+    );
+    return Business.fromJson(response);
+  }
 }
 
 abstract class DoordashDriveEndpointPaths {
-  static const String _basePath = 'drive/v2';
+  static const String _delivery = 'drive/v2';
+  static const String _developer = 'developer/v1';
 
   /// /drive/v2/quotes
-  static const String createQuote = '$_basePath/quotes';
+  static const String createQuote = '$_delivery/quotes';
 
   /// /drive/v2/[externalDeliveryId]/accept
   static String acceptQuote(String externalDeliveryId) =>
-      '$_basePath/$externalDeliveryId/accept';
+      '$_delivery/$externalDeliveryId/accept';
 
   /// /drive/v2/deliveries
-  static const String createDelivery = '$_basePath/deliveries';
+  static const String createDelivery = '$_delivery/deliveries';
 
   /// /drive/v2/deliveries/[externalDeliveryId]
   static String getUpdateDelivery(String externalDeliveryId) =>
-      '$_basePath/deliveries/$externalDeliveryId';
+      '$_delivery/deliveries/$externalDeliveryId';
 
   /// /drive/v2/deliveries/[externalDeliveryId]/cancel
   static String cancelDelivery(String externalDeliveryId) =>
-      '$_basePath/deliveries/$externalDeliveryId/cancel';
+      '$_delivery/deliveries/$externalDeliveryId/cancel';
+
+  /// /developer/v1/businesses/[externalBusinessId]
+  static String getBusiness(String externalBusinessId) =>
+      '$_developer/businesses/$externalBusinessId';
+
+  static String updateBusiness(String externalBusinessId) =>
+      getBusiness(externalBusinessId);
 }

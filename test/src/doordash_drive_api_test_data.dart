@@ -1,4 +1,5 @@
 abstract class DoordashDriveApiTestData {
+  // CREATE QUOTE
   static const createQuoteRequest = {
     'external_delivery_id': 'D-1763',
     'locale': 'en-US, fr-CA, es-US',
@@ -227,6 +228,8 @@ abstract class DoordashDriveApiTestData {
     'dasher_vehicle_model': 'Corolla',
     'dasher_vehicle_year': '2006',
   };
+
+  // ACCEPT QUOTE
   static const acceptQuoteSuccessResponse = {
     'external_delivery_id': 'D-1763',
     'locale': 'en-US, fr-CA, es-US',
@@ -363,6 +366,8 @@ abstract class DoordashDriveApiTestData {
     'dasher_vehicle_model': 'Corolla',
     'dasher_vehicle_year': '2006',
   };
+
+  // CREATE DELIVERY
   static const createDeliveryRequest = {
     'external_delivery_id': 'D-1763',
     'locale': 'en-US, fr-CA, es-US',
@@ -590,6 +595,8 @@ abstract class DoordashDriveApiTestData {
     'dasher_vehicle_model': 'Corolla',
     'dasher_vehicle_year': '2006',
   };
+
+  // GET DELIVERY
   static const getDeliverySuccessResponse = {
     'external_delivery_id': 'D-1763',
     'locale': 'en-US, fr-CA, es-US',
@@ -726,6 +733,8 @@ abstract class DoordashDriveApiTestData {
     'dasher_vehicle_model': 'Corolla',
     'dasher_vehicle_year': '2006',
   };
+
+  // UPDATE DELIVERY
   static const updateDeliveryRequest = {
     'pickup_address': '901 Market Street 6th Floor San Francisco, CA 94103',
     'pickup_business_name': 'Wells Fargo SF Downtown',
@@ -939,6 +948,8 @@ abstract class DoordashDriveApiTestData {
     'dasher_vehicle_model': 'Corolla',
     'dasher_vehicle_year': '2006',
   };
+
+  // CANCEL DELIVERY
   static const cancelDeliverySuccessResponse = {
     'external_delivery_id': 'D-1763',
     'locale': 'en-US, fr-CA, es-US',
@@ -1074,5 +1085,78 @@ abstract class DoordashDriveApiTestData {
     'dasher_vehicle_make': 'Toyota',
     'dasher_vehicle_model': 'Corolla',
     'dasher_vehicle_year': '2006',
+  };
+
+  // GET BUSINESS
+  static const getBusinessSuccessResponse = {
+    'name': 'Neighborhood Deli',
+    'description':
+        'A neighborhood deli serving many tasty sandwiches and soups.',
+    'external_business_id': 'a0720d55-7cbe-41ce-8185-58285b7985cd',
+    'activation_status': 'active',
+    'created_at': '2022-04-25T17:21:43Z',
+    'last_updated_at': '2022-04-25T17:21:43Z',
+    'is_test': false,
+    'external_metadata': {
+      'number_of_stores': '10',
+      'client_email': 'merchant@doordash.com',
+      'client_phone_number': '+12065551212',
+      'external_store_ids': [
+        null,
+      ],
+    },
+  };
+
+  // UPDATE BUSINESS
+  static const updateBusinessRequest = {
+    'name': 'Neighborhood Deli',
+    'description':
+        'A neighborhood deli serving many tasty sandwiches and soups.',
+    'activation_status': 'active',
+  };
+  static const updateBusinessSuccessResponse = {
+    'name': 'Neighborhood Deli',
+    'description':
+        'A neighborhood deli serving many tasty sandwiches and soups.',
+    'external_business_id': 'a0720d55-7cbe-41ce-8185-58285b7985cd',
+    'activation_status': 'active',
+    'created_at': '2022-04-25T17:21:43Z',
+    'last_updated_at': '2022-04-25T17:21:43Z',
+    'is_test': false,
+    'external_metadata': {
+      'number_of_stores': '10',
+      'client_email': 'merchant@doordash.com',
+      'client_phone_number': '+12065551212',
+      'external_store_ids': [
+        null,
+      ],
+    },
+  };
+
+  // CREATE BUSINESS
+  static const createBusinessRequest = {
+    'external_business_id': 'a0720d55-7cbe-41ce-8185-58285b7985cd',
+    'name': 'Neighborhood Deli',
+    'description':
+        'A neighborhood deli serving many tasty sandwiches and soups.',
+    'activation_status': 'active',
+  };
+  static const createBusinessSuccessResponse = {
+    'name': 'Neighborhood Deli',
+    'description':
+        'A neighborhood deli serving many tasty sandwiches and soups.',
+    'external_business_id': 'a0720d55-7cbe-41ce-8185-58285b7985cd',
+    'activation_status': 'active',
+    'created_at': '2022-04-25T17:21:43Z',
+    'last_updated_at': '2022-04-25T17:21:43Z',
+    'is_test': false,
+    'external_metadata': {
+      'number_of_stores': '10',
+      'client_email': 'merchant@doordash.com',
+      'client_phone_number': '+12065551212',
+      'external_store_ids': [
+        null,
+      ],
+    },
   };
 }
