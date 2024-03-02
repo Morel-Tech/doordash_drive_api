@@ -1,6 +1,5 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
 import 'package:doordash_drive_api/src/doordash_drive_client.dart';
-import 'package:doordash_drive_api/src/shared_model/business/business.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
