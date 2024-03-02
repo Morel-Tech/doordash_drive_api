@@ -1,6 +1,5 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
 import 'package:doordash_drive_api/src/doordash_drive_client.dart';
-import 'package:doordash_drive_api/src/shared_model/shared_model.dart';
 
 /// {@template doordash_drive_api}
 /// A client for the Doordash Drive REST API
@@ -81,7 +80,7 @@ class DoordashDriveApi {
     required String externalDeliveryId,
   }) async {
     final response = await _client.send(
-      path: DoordashDriveEndpointPaths.getUpdateDelivery(externalDeliveryId),
+      path: DoordashDriveEndpointPaths.getDelivery(externalDeliveryId),
       method: HttpMethod.get,
     );
 
@@ -100,7 +99,7 @@ class DoordashDriveApi {
     required UpdateDeliveryRequest request,
   }) async {
     final response = await _client.send(
-      path: DoordashDriveEndpointPaths.getUpdateDelivery(externalDeliveryId),
+      path: DoordashDriveEndpointPaths.updateDelivery(externalDeliveryId),
       method: HttpMethod.patch,
       body: request.toJson(),
     );
@@ -164,8 +163,12 @@ abstract class DoordashDriveEndpointPaths {
   static const String createDelivery = '$_delivery/deliveries';
 
   /// /drive/v2/deliveries/[externalDeliveryId]
-  static String getUpdateDelivery(String externalDeliveryId) =>
+  static String getDelivery(String externalDeliveryId) =>
       '$_delivery/deliveries/$externalDeliveryId';
+
+  /// /drive/v2/deliveries/[externalDeliveryId]
+  static String updateDelivery(String externalDeliveryId) =>
+      getDelivery(externalDeliveryId);
 
   /// /drive/v2/deliveries/[externalDeliveryId]/cancel
   static String cancelDelivery(String externalDeliveryId) =>
