@@ -1,6 +1,5 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
 import 'package:doordash_drive_api/src/doordash_drive_client.dart';
-import 'package:doordash_drive_api/src/shared_model/shared_model.dart';
 
 /// {@template doordash_drive_api}
 /// A client for the Doordash Drive REST API
