@@ -14,6 +14,7 @@ dev_dependencies:
   test: ^1.19.2
   very_good_analysis: ^5.0.0
 dependencies:
+  dart_jsonwebtoken: ^2.13.0
   equatable: ^2.0.5
   http: ^1.1.2
   json_annotation: ^4.8.1

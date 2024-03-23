@@ -1,16 +1,27 @@
 import 'package:doordash_drive_api/doordash_drive_api.dart';
 import 'package:doordash_drive_api/src/doordash_drive_client.dart';
+import 'package:doordash_drive_api/src/token_storage.dart';
+import 'package:http/http.dart';
 
 /// {@template doordash_drive_api}
 /// A client for the Doordash Drive REST API
 /// {@endtemplate}
 class DoordashDriveApi {
   /// {@macro doordash_drive_api}
-  const DoordashDriveApi({
-    required DoordashDriveClient client,
-  }) : _client = client;
+  DoordashDriveApi({
+    required AccessKey accessKey,
+    DoordashDriveClient? client,
+    TokenStorage? tokenStorage,
+  }) {
+    _client = client ??
+        DoordashDriveClient(
+          client: Client(),
+          baseUrl: DoordashDriveEndpointPaths.baseUrl,
+          tokenStorage: tokenStorage ?? TokenStorage(accessKey: accessKey),
+        );
+  }
 
-  final DoordashDriveClient _client;
+  late DoordashDriveClient _client;
 
   /// Confirm that a delivery is serviceable by DoorDash and
   /// what it would cost by creating a quote.
@@ -141,14 +152,15 @@ class DoordashDriveApi {
   }) async {
     final response = await _client.send(
       path: DoordashDriveEndpointPaths.getBusiness(externalBusinessId),
-      body: request.toJson(),
       method: HttpMethod.patch,
+      body: request.toJson(),
     );
     return Business.fromJson(response);
   }
 }
 
 abstract class DoordashDriveEndpointPaths {
+  static const String baseUrl = 'https://openapi.doordash.com/';
   static const String _delivery = 'drive/v2';
   static const String _developer = 'developer/v1';
 
