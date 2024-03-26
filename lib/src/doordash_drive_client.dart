@@ -27,13 +27,11 @@ class DoordashDriveClient {
       method.name.toUpperCase(),
       Uri.parse('$_baseUrl/$path'),
     );
-    print('---- request: $request');
-    request.headers['Authorization'] = 'Bearer ${_tokenStorage.getToken}';
+    request.headers['Authorization'] = 'Bearer ${_tokenStorage.token}';
     request.headers['Content-type'] = 'application/json';
     try {
       final streamedResponse = await _client.send(request);
       final response = await Response.fromStream(streamedResponse);
-      print('------ response: ${response.body}');
       if (response.statusCode == 200) {
         return Map<String, dynamic>.from(jsonDecode(response.body) as Map);
       } else {
@@ -42,7 +40,6 @@ class DoordashDriveClient {
         );
       }
     } catch (e) {
-      print('----- There was an issue mapping the response');
       throw Exception('Something went wrong while mapping the response');
     }
   }

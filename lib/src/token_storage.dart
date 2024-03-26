@@ -7,20 +7,20 @@ import 'package:doordash_drive_api/src/exceptions/exceptions.dart';
 /// Holds the implementation for authenticating with a Json Web Token
 class TokenStorage {
   TokenStorage({
-    required AccessKey accessKey,
-  }) : _accessKey = accessKey {
+    required TokenProperties tokenProperties,
+  }) : _tokenProperties = tokenProperties {
     _generateToken();
   }
 
   late String _token;
-  final AccessKey _accessKey;
+  final TokenProperties _tokenProperties;
 
-  String get getToken {
+  String get token {
     try {
       JWT.verify(
         _token,
         SecretKey(
-          base64Url.normalize(_accessKey.signingSecret),
+          base64Url.normalize(_tokenProperties.signingSecret),
         ),
       );
       return _token;
@@ -35,8 +35,8 @@ class TokenStorage {
     final jwt = JWT(
       {
         'aud': 'doordash',
-        'iss': _accessKey.developerId,
-        'kid': _accessKey.keyId,
+        'iss': _tokenProperties.developerId,
+        'kid': _tokenProperties.keyId,
         'exp': DateTime.now()
                 .toUtc()
                 .add(const Duration(seconds: 300))
@@ -52,7 +52,7 @@ class TokenStorage {
 
     final jwtToken = jwt.sign(
       SecretKey(
-        base64Url.normalize(_accessKey.signingSecret),
+        base64Url.normalize(_tokenProperties.signingSecret),
       ),
     );
     _token = jwtToken;

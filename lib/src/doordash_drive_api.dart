@@ -9,7 +9,7 @@ import 'package:http/http.dart';
 class DoordashDriveApi {
   /// {@macro doordash_drive_api}
   DoordashDriveApi({
-    required AccessKey accessKey,
+    required TokenProperties tokenProperties,
     DoordashDriveClient? client,
     TokenStorage? tokenStorage,
   }) {
@@ -17,7 +17,8 @@ class DoordashDriveApi {
         DoordashDriveClient(
           client: Client(),
           baseUrl: DoordashDriveEndpointPaths.baseUrl,
-          tokenStorage: tokenStorage ?? TokenStorage(accessKey: accessKey),
+          tokenStorage:
+              tokenStorage ?? TokenStorage(tokenProperties: tokenProperties),
         );
   }
 

@@ -10,17 +10,17 @@ class DoordashDriveClientMock extends Mock implements DoordashDriveClient {}
 void main() {
   late DoordashDriveApi api;
   late DoordashDriveClient client;
-  late AccessKey accessKey;
+  late TokenProperties tokenProperties;
 
   setUp(() {
-    accessKey = const AccessKey(
+    tokenProperties = const TokenProperties(
       developerId: 'developerId',
       keyId: 'keyId',
       signingSecret: 'signingSecret',
     );
     client = DoordashDriveClientMock();
     api = DoordashDriveApi(
-      accessKey: accessKey,
+      tokenProperties: tokenProperties,
       client: client,
     );
   });

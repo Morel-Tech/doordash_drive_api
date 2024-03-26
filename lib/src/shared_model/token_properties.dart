@@ -1,12 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'token_properties.g.dart';
 
 /// Holds properties for generating a Doordash Drive API token
-class AccessKey extends Equatable {
-  const AccessKey({
+@JsonSerializable()
+class TokenProperties extends Equatable {
+  const TokenProperties({
     required this.developerId,
     required this.keyId,
     required this.signingSecret,
   });
+
+  factory TokenProperties.fromJson(Map<String, dynamic> json) =>
+      _$TokenPropertiesFromJson(json);
 
   final String developerId;
   final String keyId;

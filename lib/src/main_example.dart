@@ -6,15 +6,14 @@ import 'package:doordash_drive_api/doordash_drive_api.dart';
 void main() async {
   final secrets = File('./lib/src/secrets.json').readAsStringSync();
   final secretsJson = jsonDecode(secrets) as Map<String, dynamic>;
-  final accessKey = AccessKey.fromJson(secretsJson);
-  final api = DoordashDriveApi(accessKey: accessKey);
+  final tokenProperties = TokenProperties.fromJson(secretsJson);
+  final api = DoordashDriveApi(tokenProperties: tokenProperties);
 
   try {
     final request = DeliveryRequest.fromJson(ExampleData.createDeliveryJson);
-    final result = await api.createDelivery(request: request);
-    print(result.deliveryStatus.name);
+    await api.createDelivery(request: request);
   } catch (e) {
-    print('------- $e');
+    rethrow;
   }
 }
 
