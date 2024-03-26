@@ -160,7 +160,7 @@ class DoordashDriveApi {
 }
 
 abstract class DoordashDriveEndpointPaths {
-  static const String baseUrl = 'https://openapi.doordash.com/';
+  static const String baseUrl = 'https://openapi.doordash.com';
   static const String _delivery = 'drive/v2';
   static const String _developer = 'developer/v1';
 

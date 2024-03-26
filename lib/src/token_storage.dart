@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:doordash_drive_api/doordash_drive_api.dart';
 import 'package:doordash_drive_api/src/exceptions/exceptions.dart';
@@ -17,7 +19,9 @@ class TokenStorage {
     try {
       JWT.verify(
         _token,
-        SecretKey(_accessKey.signingSecret),
+        SecretKey(
+          base64Url.normalize(_accessKey.signingSecret),
+        ),
       );
       return _token;
     } on JWTExpiredException {
@@ -32,6 +36,7 @@ class TokenStorage {
       {
         'aud': 'doordash',
         'iss': _accessKey.developerId,
+        'kid': _accessKey.keyId,
         'exp': DateTime.now()
                 .toUtc()
                 .add(const Duration(seconds: 300))
@@ -39,14 +44,18 @@ class TokenStorage {
             1000,
         'iat': DateTime.now().toUtc(),
       },
-      jwtId: _accessKey.keyId,
       header: {
         'dd-ver': 'DD-JWT-V1',
+        'typ': 'JWT',
       },
     );
 
-    final newToken = jwt.sign(SecretKey(_accessKey.signingSecret));
-    _token = newToken;
-    return newToken;
+    final jwtToken = jwt.sign(
+      SecretKey(
+        base64Url.normalize(_accessKey.signingSecret),
+      ),
+    );
+    _token = jwtToken;
+    return jwtToken;
   }
 }
