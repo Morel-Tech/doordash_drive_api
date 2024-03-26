@@ -10,10 +10,19 @@ class DoordashDriveClientMock extends Mock implements DoordashDriveClient {}
 void main() {
   late DoordashDriveApi api;
   late DoordashDriveClient client;
+  late TokenProperties tokenProperties;
 
   setUp(() {
+    tokenProperties = const TokenProperties(
+      developerId: 'developerId',
+      keyId: 'keyId',
+      signingSecret: 'signingSecret',
+    );
     client = DoordashDriveClientMock();
-    api = DoordashDriveApi(client: client);
+    api = DoordashDriveApi(
+      tokenProperties: tokenProperties,
+      client: client,
+    );
   });
 
   group('DoordashDriveApi', () {
@@ -205,8 +214,8 @@ void main() {
               path: DoordashDriveEndpointPaths.updateBusiness(
                 'externalBusinessId',
               ),
-              body: updateBusinessRequest.toJson(),
               method: HttpMethod.patch,
+              body: updateBusinessRequest.toJson(),
             ),
           ).thenAnswer(
             (_) => Future.value(

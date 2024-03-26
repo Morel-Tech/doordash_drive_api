@@ -9,11 +9,13 @@
   "useGitignore": true,
   "words": [
     "Businsess",
+    "callbox",
     "CODABAR",
     "doordash",
     "dropoff",
     "endtemplate",
     "enroute",
+    "jsonwebtoken",
     "libphonenumber",
     "midmile",
     "mocktail",
